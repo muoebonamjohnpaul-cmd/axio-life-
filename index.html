@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axio-Life | Making Life Better</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e8ecf2;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1769ff;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #172033;
+      margin-left: 25px;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 90px 7%;
+      background: linear-gradient(135deg, #eef5ff, #ffffff);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #1769ff;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 19px;
+      color: #596579;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 27px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 7px;
+    }
+
+    .primary {
+      background: #1769ff;
+      color: white;
+    }
+
+    .secondary {
+      background: white;
+      color: #1769ff;
+      border: 1px solid #1769ff;
+    }
+
+    .section {
+      padding: 75px 7%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .section-intro {
+      color: #697386;
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(30, 50, 80, 0.08);
+    }
+
+    .card .icon {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #697386;
+    }
+
+    .cta {
+      background: #172033;
+      color: white;
+      padding: 75px 7%;
+      text-align: center;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 15px auto 30px;
+      color: #cbd3e1;
+    }
+
+    footer {
+      background: #101725;
+      color: #9da8ba;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        display: none;
+      }
+
+      header {
+        padding: 18px 5%;
+      }
+
+      .hero {
+        padding: 70px 5%;
+      }
+
+      .section {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">axio-life</div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#how">How It Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Building a better life,<br><span>together.</span></h1>
+
+      <p>
+        Axio-Life is being built to connect people, opportunities,
+        resources and meaningful support in one place.
+      </p>
+
+      <div class="buttons">
+        <a href="#how" class="button primary">Get Started</a>
+        <a href="#about" class="button secondary">Learn More</a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>Why Axio-Life?</h2>
+
+      <p class="section-intro">
+        We believe technology can make it easier for people to find
+        the support and opportunities they need.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Connection</h3>
+          <p>
+            Bringing people and useful resources closer together.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🌱</div>
+          <h3>Opportunity</h3>
+          <p>
+            Helping people discover pathways toward a better future.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💡</div>
+          <h3>Innovation</h3>
+          <p>
+            Using technology to solve real problems affecting everyday life.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">❤️</div>
+          <h3>Community</h3>
+          <p>
+            Creating a platform where people can support one another.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <h2>How It Works</h2>
+
+      <p class="section-intro">
+        Axio-Life is designed around three simple ideas.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">1️⃣</div>
+          <h3>Discover</h3>
+          <p>
+            Find resources, opportunities and support relevant to you.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">2️⃣</div>
+          <h3>Connect</h3>
+          <p>
+            Connect with people and organizations that can help.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">3️⃣</div>
+          <h3>Grow</h3>
+          <p>
+            Take the next step toward improving your life and community.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Let's build something meaningful.</h2>
+
+      <p>
+        Axio-Life is only the beginning. We're building a platform
+        focused on people, opportunity and positive change.
+      </p>
+
+      <a href="mailto:hello@axio-life.com" class="button primary">
+        Contact Axio-Life
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Axio-Life. All rights reserved.
+  </footer>
+
+</body>
+</html>
