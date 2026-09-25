@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axio Life — My Progress</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f6f7fb;
+  color:#171923;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.top{
+  background:#11131a;
+  color:white;
+  padding:18px 20px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.top-inner{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+.logo span{color:#ff9d24}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:24px 18px 80px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#161923,#292d3d);
+  color:white;
+  border-radius:26px;
+  padding:30px 24px;
+  margin-bottom:22px;
+}
+.eyebrow{
+  color:#ff9d24;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+.hero h1{
+  font-size:34px;
+  line-height:1.05;
+  margin:12px 0;
+}
+.hero p{
+  color:#cbd0dc;
+  line-height:1.6;
+}
+
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  font-weight:800;
+}
+.primary{
+  background:#ff9d24;
+  color:#11131a;
+}
+.secondary{
+  background:white;
+  color:#171923;
+}
+.dark{
+  background:#171923;
+  color:white;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.card{
+  background:white;
+  border:1px solid #e7e8ed;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+.card h2,.card h3{margin-top:0}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.avatar{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#171923;
+  color:#ff9d24;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  font-weight:900;
+}
+
+.stat{
+  display:flex;
+  justify-content:space-between;
+  margin:12px 0;
+  color:#626775;
+}
+.stat strong{color:#171923}
+
+.category{
+  display:inline-block;
+  background:#f0f1f5;
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.progress{
+  height:10px;
+  background:#eceef2;
+  border-radius:99px;
+  overflow:hidden;
+  margin:14px 0;
+}
+.progress div{
+  height:100%;
+  width:0%;
+  background:#ff9d24;
+  transition:.3s;
+}
+
+.milestone{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid #eee;
+}
+.milestone:last-child{border-bottom:0}
+.check{
+  width:30px;
+  height:30px;
+  border:2px solid #c8cbd3;
+  border-radius:50%;
+  background:white;
+  display:grid;
+  place-items:center;
+  flex:none;
+}
+.done .check{
+  background:#171923;
+  border-color:#171923;
+  color:#ff9d24;
+}
+.done .milestone-text{
+  text-decoration:line-through;
+  color:#8b8f99;
+}
+
+.form{
+  display:none;
+  margin-top:18px;
+}
+.form.active{display:block}
+
+label{
+  display:block;
+  font-weight:800;
+  margin:14px 0 7px;
+}
+input,select,textarea{
+  width:100%;
+  border:1px solid #dfe1e7;
+  border-radius:12px;
+  padding:13px;
+  background:white;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#ff9d24;
+}
+
+.empty{
+  text-align:center;
+  padding:35px 10px;
+  color:#777c88;
+}
+
+.achievement{
+  background:linear-gradient(145deg,#171923,#303545);
+  color:white;
+  border-radius:22px;
+  padding:25px;
+  position:relative;
+  overflow:hidden;
+}
+.achievement:after{
+  content:"AXIO";
+  position:absolute;
+  right:-20px;
+  bottom:-25px;
+  font-size:90px;
+  font-weight:900;
+  color:rgba(255,255,255,.04);
+}
+.verified{
+  display:inline-block;
+  background:#ff9d24;
+  color:#11131a;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.notice{
+  background:#fff7eb;
+  border:1px solid #ffd79e;
+  color:#6b481c;
+  padding:14px;
+  border-radius:14px;
+  margin-top:15px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .hero h1{font-size:29px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="logo">AXIO <span>LIFE</span></div>
+    <button class="btn secondary" onclick="scrollToJourney()">My Progress</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <div class="eyebrow">VERIFY · CELEBRATE · REWARD</div>
+  <h1>Your progress deserves to be seen.</h1>
+  <p>
+    Create a journey, document your milestones and turn meaningful progress
+    into an achievement you can remember and share.
+  </p>
+  <button class="btn primary" onclick="openJourneyForm()">+ Create a Journey</button>
+</section>
+
+<section class="grid">
+
+<div class="card">
+  <div class="profile">
+    <div class="avatar" id="avatar">A</div>
+    <div>
+      <h2 id="profileName">My Axio</h2>
+      <div style="color:#777">@myprogress</div>
+    </div>
+  </div>
+
+  <div class="stat">
+    <span>Journeys</span>
+    <strong id="journeyCount">0</strong>
+  </div>
+  <div class="stat">
+    <span>Milestones</span>
+    <strong id="milestoneCount">0</strong>
+  </div>
+  <div class="stat">
+    <span>Completed</span>
+    <strong id="completedCount">0</strong>
+  </div>
+</div>
+
+<div class="card">
+  <h3>What is Axio?</h3>
+  <p style="line-height:1.6;color:#666">
+    A social platform built around human progress — helping people
+    document, verify, celebrate and eventually reward meaningful achievements.
+  </p>
+  <span class="category">Human Progress</span>
+</div>
+
+</section>
+
+<section class="card" id="journeySection" style="margin-top:16px">
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+    <div>
+      <h2>My Journey</h2>
+      <div style="color:#777">Build your story one milestone at a time.</div>
+    </div>
+    <button class="btn primary" onclick="openJourneyForm()">+ Journey</button>
+  </div>
+
+  <div id="journeyForm" class="form">
+    <h3>Create your journey</h3>
+
+    <label>What are you working toward?</label>
+    <input id="journeyTitle" placeholder="e.g. Graduate from university">
+
+    <label>Category</label>
+    <select id="journeyCategory">
+      <option>Education</option>
+      <option>Career</option>
+      <option>Business</option>
+      <option>Fitness</option>
+      <option>Finance</option>
+      <option>Skills</option>
+      <option>Personal</option>
+      <option>Other</option>
+    </select>
+
+    <label>Target date (optional)</label>
+    <input id="targetDate" type="date">
+
+    <div class="actions">
+      <button class="btn primary" onclick="createJourney()">Create Journey</button>
+      <button class="btn dark" onclick="closeJourneyForm()">Cancel</button>
+    </div>
+  </div>
+
+  <div id="journeys"></div>
+</section>
+
+<section id="achievementSection" style="margin-top:16px"></section>
+
+<div class="notice">
+  <strong>Prototype note:</strong> This first Axio build saves data only in
+  this browser. Verification is currently a concept and is not yet a real
+  verification service.
+</div>
+
+</main>
+
+<script>
+let data = JSON.parse(localStorage.getItem("axioData") || "null");
+
+if(!data){
+  data = {
+    journeys: []
+  };
+}
+
+function save(){
+  localStorage.setItem("axioData", JSON.stringify(data));
+}
+
+function openJourneyForm(){
+  document.getElementById("journeyForm").classList.add("active");
+  document.getElementById("journeyTitle").focus();
+}
+
+function closeJourneyForm(){
+  document.getElementById("journeyForm").classList.remove("active");
+}
+
+function createJourney(){
+  const title = document.getElementById("journeyTitle").value.trim();
+  const category = document.getElementById("journeyCategory").value;
+  const target = document.getElementById("targetDate").value;
+
+  if(!title){
+    alert("Give your journey a name first.");
+    return;
+  }
+
+  data.journeys.push({
+    id: Date.now(),
+    title,
+    category,
+    target,
+    milestones: []
+  });
+
+  save();
+
+  document.getElementById("journeyTitle").value = "";
+  document.getElementById("targetDate").value = "";
+
+  closeJourneyForm();
+  render();
+}
+
+function addMilestone(id){
+  const input = document.getElementById("milestone-" + id);
+  const text = input.value.trim();
+
+  if(!text){
+    alert("Write a milestone first.");
+    return;
+  }
+
+  const journey = data.journeys.find(j => j.id === id);
+
+  journey.milestones.push({
+    id: Date.now(),
+    text,
+    done:false
+  });
+
+  save();
+  render();
+}
+
+function toggleMilestone(journeyId,milestoneId){
+  const journey = data.journeys.find(j => j.id === journeyId);
+  const milestone = journey.milestones.find(m => m.id === milestoneId);
+
+  milestone.done = !milestone.done;
+
+  save();
+  render();
+}
+
+function deleteJourney(id){
+  if(confirm("Delete this journey?")){
+    data.journeys = data.journeys.filter(j => j.id !== id);
+    save();
+    render();
+  }
+}
+
+function scrollToJourney(){
+  document.getElementById("journeySection")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+function render(){
+  const journeys = document.getElementById("journeys");
+
+  let total=0;
+  let completed=0;
+
+  data.journeys.forEach(j=>{
+    total += j.milestones.length;
+    completed += j.milestones.filter(m=>m.done).length;
+  });
+
+  document.getElementById("journeyCount").textContent =
+    data.journeys.length;
+
+  document.getElementById("milestoneCount").textContent =
+    total;
+
+  document.getElementById("completedCount").textContent =
+    completed;
+
+  if(data.journeys.length===0){
+    journeys.innerHTML = `
+      <div class="empty">
+        <div style="font-size:40px">🌱</div>
+        <h3>Your progress starts here.</h3>
+        <p>Create your first journey and start documenting your story.</p>
+      </div>
+    `;
+  }else{
+
+    journeys.innerHTML = data.journeys.map(j=>{
+      const done = j.milestones.filter(m=>m.done).length;
+      const count = j.milestones.length;
+      const percent = count ? Math.round(done/count*100) : 0;
+
+      return `
+      <div class="card" style="margin-top:16px;border:0;background:#f8f9fb">
+
+        <div style="display:flex;justify-content:space-between;gap:10px">
+          <div>
+            <span class="category">${j.category}</span>
+            <h2 style="margin:12px 0 5px">${escapeHTML(j.title)}</h2>
+            <div style="color:#777;font-size:13px">
+              ${done} of ${count} milestones completed
+            </div>
+          </div>
+
+          <button
+            class="btn"
+            style="background:#eee"
+            onclick="deleteJourney(${j.id})">
+            ×
+          </button>
+        </div>
+
+        <div class="progress">
+          <div style="width:${percent}%"></div>
+        </div>
+
+        ${
+          j.milestones.length
+          ? j.milestones.map(m=>`
+            <div class="milestone ${m.done ? "done":""}"
+                 onclick="toggleMilestone(${j.id},${m.id})">
+
+              <div class="check">${m.done ? "✓":""}</div>
+
+              <div class="milestone-text">
+                ${escapeHTML(m.text)}
+              </div>
+            </div>
+          `).join("")
+          : `
+            <div class="empty" style="padding:20px">
+              No milestones yet.
+            </div>
+          `
+        }
+
+        <div style="margin-top:15px">
+          <input
+            id="milestone-${j.id}"
+            placeholder="Add a milestone..."
+            onkeydown="if(event.key==='Enter') addMilestone(${j.id})">
+
+          <button
+            class="btn primary"
+            style="margin-top:9px"
+            onclick="addMilestone(${j.id})">
+            + Add Progress
+          </button>
+        </div>
+
+      </div>
+      `;
+    }).join("");
+  }
+
+  renderAchievement();
+}
+
+function renderAchievement(){
+  const section = document.getElementById("achievementSection");
+
+  const completedJourney = data.journeys.find(j =>
+    j.milestones.length > 0 &&
+    j.milestones.every(m=>m.done)
+  );
+
+  if(!completedJourney){
+    section.innerHTML = "";
+    return;
+  }
+
+  section.innerHTML = `
+    <div class="achievement">
+      <span class="verified">AXIO VERIFIED · PROTOTYPE</span>
+
+      <h2 style="font-size:28px;margin-bottom:5px">
+        Achievement unlocked 🎉
+      </h2>
+
+      <p style="color:#cdd1dc">
+        ${escapeHTML(completedJourney.title)}
+      </p>
+
+      <div style="margin-top:22px">
+        <strong>${completedJourney.milestones.length}</strong>
+        milestones completed
+      </div>
+
+      <div class="actions">
+        <button class="btn secondary"
+          onclick="shareAchievement('${escapeHTML(completedJourney.title)}')">
+          Share Achievement
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+async function shareAchievement(title){
+  const text =
+    "I completed my journey: " + title +
+    " — documented on Axio Life. Your progress deserves to be seen.";
+
+  if(navigator.share){
+    try{
+      await navigator.share({
+        title:"My Axio Achievement",
+        text:text
+      });
+    }catch(e){}
+  }else{
+    await navigator.clipboard.writeText(text);
+    alert("Achievement text copied.");
+  }
+}
+
+function escapeHTML(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+render();
+</script>
+
+</body>
+</html>
