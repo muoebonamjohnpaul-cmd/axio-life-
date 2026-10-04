@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Axio Life — My Progress</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f6f8;color:#171923}
+button,input,select{font:inherit}button{cursor:pointer;border:0}
+.top{background:#11131a;color:#fff;padding:16px 18px;position:sticky;top:0;z-index:20}
+.topin{max-width:960px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-weight:900;letter-spacing:3px;font-size:20px}.logo span{color:#ff9d24}
+.container{max-width:960px;margin:auto;padding:22px 16px 70px}
+.hero{background:linear-gradient(135deg,#11131a,#303545);color:#fff;border-radius:26px;padding:28px 22px;margin-bottom:18px}
+.eyebrow{color:#ff9d24;font-size:11px;font-weight:900;letter-spacing:2px}
+h1{font-size:34px;line-height:1.05;margin:12px 0}p{line-height:1.55}
+.btn{padding:12px 16px;border-radius:13px;font-weight:800}.primary{background:#ff9d24;color:#11131a}.light{background:#fff;color:#171923}.dark{background:#171923;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card{background:#fff;border:1px solid #e6e7eb;border-radius:20px;padding:19px;margin-bottom:15px}
+.profile{display:flex;gap:13px;align-items:center}.avatar{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#171923;color:#ff9d24;font-weight:900;font-size:21px}
+.stat{display:flex;justify-content:space-between;color:#666;margin-top:12px}.stat strong{color:#171923}
+label{display:block;font-weight:800;margin:13px 0 6px}input,select{width:100%;padding:12px;border:1px solid #dcdfe6;border-radius:12px;background:#fff}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.hidden{display:none}
+.journey{background:#f8f9fb;border-radius:18px;padding:16px;margin-top:14px}.tag{display:inline-block;background:#eceef3;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:800}
+.bar{height:9px;background:#e7e9ee;border-radius:99px;overflow:hidden;margin:14px 0}.bar>div{height:100%;background:#ff9d24}
+.milestone{display:flex;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #e8e9ed}.milestone:last-child{border-bottom:0}
+.check{width:28px;height:28px;border:2px solid #c7cad2;border-radius:50%;display:grid;place-items:center;flex:none;background:#fff}.done .check{background:#171923;color:#ff9d24;border-color:#171923}.done .mt{text-decoration:line-through;color:#888}
+.notice{background:#fff7eb;border:1px solid #ffd79e;color:#674619;border-radius:14px;padding:13px;font-size:13px;margin-top:15px}
+.auth{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.auth input{width:min(230px,55vw);padding:9px}.status{font-size:12px;color:#bfc3ce}
+.achievement{background:linear-gradient(145deg,#171923,#303545);color:#fff;border-radius:21px;padding:22px}.under{display:inline-block;background:#ff9d24;color:#11131a;padding:6px 9px;border-radius:99px;font-size:10px;font-weight:900}
+@media(max-width:700px){.grid{grid-template-columns:1fr}h1{font-size:29px}.auth input{width:100%}.auth{width:100%}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin">
+  <div class="logo">AXIO <span>LIFE</span></div>
+  <div class="auth">
+    <input id="email" type="email" placeholder="Email"><input id="password" type="password" placeholder="Password">
+    <button class="btn light" onclick="signIn()">Sign in</button>
+    <button class="btn primary" onclick="signUp()">Create account</button>
+  </div>
+</div></header>
+
+<main class="container">
+<section class="hero">
+  <div class="eyebrow">VERIFY · CELEBRATE · REWARD</div>
+  <h1>Your progress deserves to be seen.</h1>
+  <p>Build an achievement journey, track milestones and connect meaningful progress to verification, celebration and rewards.</p>
+  <button class="btn primary" onclick="openForm()">+ Create a Journey</button>
+  <div id="authStatus" class="status" style="margin-top:12px">Sign in to save your progress to Axio.</div>
+</section>
+
+<section class="grid">
+<div class="card"><div class="profile"><div class="avatar" id="avatar">A</div><div><h2 id="profileName" style="margin:0">My Axio</h2><div id="profileEmail" style="color:#777">Not signed in</div></div></div>
+<div class="stat"><span>Journeys</span><strong id="journeyCount">0</strong></div>
+<div class="stat"><span>Milestones</span><strong id="milestoneCount">0</strong></div>
+<div class="stat"><span>Completed</span><strong id="completedCount">0</strong></div></div>
+<div class="card"><h3>Live Axio foundation</h3><p style="color:#666">This page is connected to the Axio Supabase backend for accounts, journeys and milestones. Verification, social and rewards are built in the backend and will be surfaced next.</p><span class="tag">CONNECTED PRODUCT</span></div>
+</section>
+
+<section class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><h2 style="margin:0">My Journey</h2><div style="color:#777">Build your story one milestone at a time.</div></div><button class="btn primary" onclick="openForm()">+ Journey</button></div>
+  <div id="form" class="hidden" style="margin-top:16px">
+    <label>What are you working toward?</label><input id="title" placeholder="e.g. Graduate from university">
+    <label>Category</label><select id="category"><option>Education</option><option>Career</option><option>Business</option><option>Fitness</option><option>Finance</option><option>Skills</option><option>Personal</option><option>Other</option></select>
+    <label>Target date (optional)</label><input id="target" type="date">
+    <div class="actions"><button class="btn primary" onclick="createJourney()">Create Journey</button><button class="btn dark" onclick="closeForm()">Cancel</button></div>
+  </div>
+  <div id="journeys"></div>
+</section>
+
+<section id="achievement"></section>
+<div class="notice"><strong>Current stage:</strong> Axio's real database layer is connected here. Evidence verification, reviewer tools, social publishing and sponsor rewards are backend-ready and will be exposed through the next interface layers.</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL="https://jptoyehumwsguzyojkhz.supabase.co";
+const SUPABASE_KEY="sb_publishable_bub-qQM1a4P183vrNIO3iA_8SBuePrS";
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let user=null, rows=[];
+
+const $=id=>document.getElementById(id);
+function openForm(){ $("form").classList.remove("hidden"); $("title").focus(); }
+function closeForm(){ $("form").classList.add("hidden"); }
+function esc(s){return String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+
+async function refresh(){
+  if(!user){rows=[];render();return;}
+  const {data,error}=await sb.from("journeys").select("id,created_at,title,category,target_date,status,visibility,milestones(id,title,text,done,completed,position,sort_order)").eq("user_id",user.id).order("created_at",{ascending:false});
+  if(error){$("authStatus").textContent="Connected, but the journey read needs attention: "+error.message;return;}
+  rows=data||[];render();
+}
+
+async function ensureProfile(){
+  if(!user)return;
+  const name=(user.email||"").split("@")[0]||"Axio User";
+  await sb.from("profiles").upsert({user_id:user.id,display_name:name,username:name.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,24)||"axio_user"},{onConflict:"user_id"});
+  $("profileName").textContent=name;
+  $("profileEmail").textContent=user.email||"Signed in";
+  $("avatar").textContent=name.charAt(0).toUpperCase();
+}
+
+async function signUp(){
+  const email=$("email").value.trim(), password=$("password").value; if(!email)return alert("Enter your email first."); if(password.length<6)return alert("Password must be at least 6 characters.");
+  const {error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:"https://axio-life.com/app-live-v3.html"}});
+  if(error)return alert(error.message);
+  alert("Check your email for the Axio confirmation link, then return here.");
+}
+async function signIn(){
+  const email=$("email").value.trim(), password=$("password").value; if(!email)return alert("Enter your email first.");
+  const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.href}});
+  if(error)return alert(error.message);
+  $("authStatus").textContent="Magic sign-in link sent. Check your email.";
+}
+
+async function createJourney(){
+  if(!user)return alert("Sign in first so Axio can save this journey.");
+  const title=$("title").value.trim(); if(!title)return alert("Give your journey a name first.");
+  const {data,error}=await sb.from("journeys").insert({user_id:user.id,title,category:$("category").value,target_date:$("target").value||null}).select().single();
+  if(error)return alert(error.message);
+  $("title").value="";$("target").value="";closeForm();await refresh();
+}
+async function addMilestone(jid){
+  if(!user)return;
+  const input=$("mi-"+jid), text=input.value.trim(); if(!text)return;
+  const {error}=await sb.from("milestones").insert({journey_id:jid,title:text,text:text,done:false,completed:false,position:0,sort_order:0});
+  if(error)return alert(error.message); input.value="";await refresh();
+}
+async function toggle(jid,mid,done){
+  const {error}=await sb.from("milestones").update({done:!done,completed:!done}).eq("id",mid).eq("journey_id",jid);
+  if(error)return alert(error.message);await refresh();
+}
+function render(){
+  let total=0,complete=0;
+  rows.forEach(j=>(j.milestones||[]).forEach(m=>{total++;if(m.done||m.completed)complete++;}));
+  $("journeyCount").textContent=rows.length;$("milestoneCount").textContent=total;$("completedCount").textContent=complete;
+  if(!rows.length){$("journeys").innerHTML='<div style="text-align:center;padding:35px;color:#777"><div style="font-size:40px">🌱</div><h3>Your progress starts here.</h3><p>Create your first real Axio journey.</p></div>';return;}
+  $("journeys").innerHTML=rows.map(j=>{
+    const ms=j.milestones||[],done=ms.filter(m=>m.done||m.completed).length,p=ms.length?Math.round(done/ms.length*100):0;
+    return `<div class="journey"><span class="tag">${esc(j.category)}</span><h2 style="margin:10px 0 3px">${esc(j.title)}</h2><div style="color:#777;font-size:13px">${done} of ${ms.length} milestones completed</div><div class="bar"><div style="width:${p}%"></div></div>${ms.length?ms.map(m=>`<div class="milestone ${m.done||m.completed?"done":""}" onclick="toggle('${j.id}','${m.id}',${!!(m.done||m.completed)})"><div class="check">${m.done||m.completed?"✓":""}</div><div class="mt">${esc(m.title||m.text||"Milestone")}</div></div>`).join(""):"<div style='color:#888;padding:12px 0'>No milestones yet.</div>"}<div style="margin-top:13px"><input id="mi-${j.id}" placeholder="Add a milestone..." onkeydown="if(event.key==='Enter')addMilestone('${j.id}')"><button class="btn primary" style="margin-top:8px" onclick="addMilestone('${j.id}')">+ Add Milestone</button></div></div>`;
+  }).join("");
+  const completed=rows.find(j=>(j.milestones||[]).length>0&&(j.milestones||[]).every(m=>m.done||m.completed));
+  $("achievement").innerHTML=completed?`<div class="achievement"><span class="under">AXIO • UNDER REVIEW</span><h2>Achievement journey completed 🎉</h2><p style="color:#cbd0dc">${esc(completed.title)}</p><strong>${completed.milestones.length}</strong> milestones completed</div>`:"";
+}
+
+sb.auth.getSession().then(async ({data})=>{user=data.session?.user||null;if(user){await ensureProfile();$("authStatus").textContent="Signed in — your Axio progress is connected to the database.";await refresh();}else render();});
+sb.auth.onAuthStateChange(async (_event,session)=>{user=session?.user||null;if(user){await ensureProfile();$("authStatus").textContent="Signed in — your Axio progress is connected to the database.";await refresh();}else{ $("authStatus").textContent="Sign in to save your progress to Axio.";render();}});
+</script>
+</body>
+</html>
