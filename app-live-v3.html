@@ -108,9 +108,9 @@ async function signUp(){
 }
 async function signIn(){
   const email=$("email").value.trim(), password=$("password").value; if(!email)return alert("Enter your email first.");
-  const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.href}});
+  const {error}=await sb.auth.signInWithPassword({email,password});
   if(error)return alert(error.message);
-  $("authStatus").textContent="Magic sign-in link sent. Check your email.";
+  $("authStatus").textContent="Signed in. Loading your Axio progress…";
 }
 
 async function createJourney(){
