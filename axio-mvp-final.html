@@ -4,6 +4,48 @@
 .feeditem{position:relative;overflow:hidden;animation:feed-in .45s both}.feeditem:nth-child(2){animation-delay:.04s}.feeditem:nth-child(3){animation-delay:.08s}.feeditem:nth-child(4){animation-delay:.12s}.feed-media{display:block;width:100%;max-height:520px;object-fit:cover;border-radius:15px;margin:14px 0;background:#0b0d12}.feed-media.video{object-fit:contain}.react button{position:relative;overflow:visible;transition:background .18s,color .18s,transform .18s,box-shadow .18s}.react button:hover{transform:translateY(-2px)}.react button.on{background:#49331c;color:#ffd18b;box-shadow:0 0 0 1px #ff9d24 inset;animation:react-pop .34s ease-out}.reaction-burst{position:absolute;left:50%;top:0;z-index:2;pointer-events:none;font-size:22px;animation:reaction-float .85s ease-out forwards}.react button:disabled{opacity:.7;cursor:wait}@keyframes feed-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes react-pop{50%{transform:scale(1.1)}}@keyframes reaction-float{0%{opacity:0;transform:translate(-50%,0) scale(.65)}18%{opacity:1}100%{opacity:0;transform:translate(-50%,-36px) scale(1.25)}}@media(prefers-reduced-motion:reduce){.feeditem,.react button.on,.reaction-burst{animation:none}.react button{transition:none}}
 </style><style>
 .comment-toggle{background:transparent;color:var(--muted);padding:8px 3px;margin-top:8px}.comment-toggle:hover{color:var(--text)}.comments{margin-top:8px;padding-top:12px;border-top:1px solid var(--line)}.comment-list{display:grid;gap:8px;margin-bottom:10px}.comment{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.comment-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.comment-head strong{font-size:12px}.comment-head span,.comment-head button{font-size:11px;color:var(--muted)}.comment-head button{background:transparent;padding:3px 5px}.comment-body{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.comment-form{display:flex;gap:8px;align-items:flex-end}.comment-form textarea{flex:1;min-width:0;min-height:54px;resize:vertical;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:11px;padding:10px;font:inherit}.comment-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px}@media(max-width:480px){.comment-form{align-items:stretch;flex-direction:column}.comment-form button{align-self:flex-start}}
+</style><style id="axio-plum-coral-theme">
+:root{--bg:#fff4ed;--panel:#fffaf6;--panel2:#f7e6e8;--text:#351a35;--muted:#745f73;--line:#ead5dd;--accent:#f45170;--good:#287b62;--danger:#c83f57}
+body{background:radial-gradient(ellipse at 12% 0%,#ffe1cf 0,transparent 34%),radial-gradient(ellipse at 92% 8%,#f0def7 0,transparent 32%),var(--bg);color:var(--text)}
+.top{background:rgba(255,250,246,.92);border-color:var(--line)}
+.nav button{color:var(--muted)}.nav button.active,.nav button:hover{background:#f4e4ed;color:#351a35}
+.composer{background:linear-gradient(145deg,#fffaf6,#fff0e9);border-color:#edcbd5;box-shadow:0 20px 60px #87385416}
+.textarea,.modalbox input{background:#fffdfb;color:var(--text);border-color:var(--line)}
+.textarea::placeholder,.comment-form textarea::placeholder{color:#9a8395}
+.textarea:focus,.comment-form textarea:focus{border-color:#f45170}
+.pill,.ghost,.react button{background:#f2e5ed;color:#4a2947}
+.pill.on{outline-color:var(--accent);color:#351a35}
+.primary{background:linear-gradient(135deg,#ff735f,#ec3e72);color:#fff;box-shadow:0 5px 14px #e34c6b35}
+.primary:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.card{background:rgba(255,250,246,.94);border-color:var(--line)}
+.stat{background:linear-gradient(145deg,#f9e9eb,#f4e7f4)}
+.stat span,.hint,.sub,.meta{color:var(--muted)}
+.journey,.momentbox{background:#fffdfb;border-color:var(--line)}
+.tag{background:#f5e5ce;color:#79541c}
+.bar{background:#f0dce3}.bar i{background:linear-gradient(90deg,#f45170,#ffad52)}
+.feeditem{border-color:var(--line)}
+.react button{transition:background .18s,color .18s,transform .18s,box-shadow .18s}
+.react button.on{background:#ffe3cd;color:#8c3a39;box-shadow:0 0 0 1px #f45170 inset;animation:react-pop .34s ease-out}
+.map{background:radial-gradient(circle at 20% 30%,#caa9c7 0 2px,transparent 3px),radial-gradient(circle at 65% 60%,#caa9c7 0 2px,transparent 3px),linear-gradient(135deg,#f9e7e1,#f4e8f4)}
+.map:before{background:repeating-linear-gradient(35deg,transparent 0 30px,#e6cbd9 31px 33px),repeating-linear-gradient(120deg,transparent 0 48px,#ead5df 49px 51px);opacity:.6}
+.maplabel{background:#fffaf0e8;color:#482344}
+.pin{box-shadow:0 0 0 8px #f4517030}
+.achievementCard{background:linear-gradient(145deg,#fff0df,#f8eaf3);border-color:#efc8ba}
+.achievementCard .share{background:#fffaf6;border-color:var(--line);color:#4a2947}
+.roar{background:linear-gradient(135deg,#f9e5dd,#f2e5f4);border-color:var(--line)}
+.mediaBadge{color:#5b3853;background:#f2e5ed}
+.bottom{background:rgba(255,250,246,.94);border-color:var(--line)}
+.bottom button{color:var(--muted)}.bottom button.active{color:#9a3150}
+.shareCard{border-color:#6a3a60;background:radial-gradient(circle at 85% 15%,#f4517040,transparent 34%),linear-gradient(145deg,#482344,#24152b);box-shadow:0 18px 45px #4b1f3b35}
+.shareBrand span,.shareLabel{color:#ffbd63}
+.shareStory{color:#f5e7f0}.shareFooter{color:#d3b7cb}
+.modalbox{background:#fffaf6;border-color:var(--line)}
+.close{background:#f2e5ed;color:#4a2947}
+.danger{background:#ffe3e4;color:#873342}
+.comment{background:#fffdfb;border-color:var(--line)}
+.comment-head span,.comment-head button{color:var(--muted)}
+.comment-form textarea{background:#fffdfb;color:var(--text);border-color:var(--line)}
+@media(prefers-reduced-motion:reduce){.primary:hover{transform:none}}
 </style></head><body>
 <header class="top"><div class="topin"><div class="logo">AXIO <b>LIFE</b></div><nav class="nav"><button class="active" data-view="home">Home</button><button data-view="explore">Explore</button><button data-view="me">Me</button></nav><div class="login"><input id="email" type="email" placeholder="Email"><input id="password" type="password" placeholder="Password"><button class="ghost" onclick="signIn()">Sign in</button><button class="primary" onclick="signUp()">Join Axio</button></div></div></header>
 <main class="wrap">
